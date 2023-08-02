@@ -1,9 +1,8 @@
 package com.keyin.passenger;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import com.keyin.city.City;
+
+import javax.persistence.*;
 
 @Entity
 public class Passenger {
@@ -14,6 +13,8 @@ public class Passenger {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    @OneToOne
+    private City passengerCity;
 
     public Passenger() {
     }
@@ -48,5 +49,13 @@ public class Passenger {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public City getPassengerCity() {
+        return passengerCity;
+    }
+
+    public void setPassengerCity(City passengerCity) {
+        this.passengerCity = passengerCity;
     }
 }

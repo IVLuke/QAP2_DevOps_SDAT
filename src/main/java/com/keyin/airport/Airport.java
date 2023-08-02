@@ -1,9 +1,10 @@
 package com.keyin.airport;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import com.keyin.aircraft.Aircraft;
+import com.keyin.city.City;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Airport {
@@ -13,8 +14,20 @@ public class Airport {
     private long id;
     private String name;
     private String code;
+    @OneToOne
+    private City city;
+    @ManyToMany
+    private List<Aircraft> aircrafts;
 
     public Airport() {
+    }
+
+    public List<Aircraft> getAircrafts() {
+        return aircrafts;
+    }
+
+    public void setAircrafts(List<Aircraft> aircrafts) {
+        this.aircrafts = aircrafts;
     }
 
     public long getId() {
@@ -39,5 +52,13 @@ public class Airport {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }
